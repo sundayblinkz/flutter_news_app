@@ -108,44 +108,55 @@ class BlogTile extends StatelessWidget {
                       blogUrl: url,
                     )));
       },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 16.0),
-          child: Column(
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.circular(6),
-                  child: Image.network(imageUrl)),
-              SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 17.0,
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.only(bottom: 16.0),
+            child: Column(
+              children: [
+                ClipRRect(
+                    // borderRadius: BorderRadius.circular(6),
+                    child: Image.network(imageUrl)),
+                SizedBox(
+                  height: 8.0,
                 ),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                desc,
-                style: TextStyle(
-                  color: Colors.black54,
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    publishedAt,
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                  child: Text(
+                    desc,
                     style: TextStyle(
                       color: Colors.black54,
                     ),
                   ),
-                ],
-              ),
-            ],
-          )),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Text(
+                        publishedAt,
+                        style: TextStyle(
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            )),
+      ),
     );
   }
 }
