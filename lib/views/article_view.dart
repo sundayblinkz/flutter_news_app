@@ -26,7 +26,7 @@ class _ArticleViewState extends State<ArticleView> {
               style: TextStyle(fontSize: 25.0),
             ),
             Text(
-              '24',
+              '19',
               style: TextStyle(color: Colors.blue, fontSize: 25.0),
             )
           ],

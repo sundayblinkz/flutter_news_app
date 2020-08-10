@@ -33,10 +33,16 @@ dependencies:
   webview_flutter: ^0.3.22+1
   intl: ^0.16.1
   flappy_search_bar: ^1.7.2
+  flutter_launcher_name: ^0.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_launcher_name:
+  name: "News19"
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
