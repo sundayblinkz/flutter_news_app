@@ -8,6 +8,7 @@ import 'package:news_24/models/article_model.dart';
 import 'package:news_24/views/article_view.dart';
 import 'package:news_24/views/category_view.dart';
 import 'package:intl/intl.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,9 +59,44 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _loading
             ? Center(
-                child: Container(
-                  child: CircularProgressIndicator(),
-                ),
+                child: Shimmer.fromColors(
+                    direction: ShimmerDirection.ltr,
+                    period: Duration(seconds: 10),
+                    baseColor: Colors.grey[700],
+                    highlightColor: Colors.grey[100],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 80.0,
+                                    width: 100.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    child: Container(
+                                      height: 8.0,
+                                      width: 80.0,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
+                    )),
               )
             : SingleChildScrollView(
                 child: Container(
@@ -132,7 +168,7 @@ class CategoryTile extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.0),
               child: CachedNetworkImage(
                 imageUrl: imageUrl,
-                width: 120.0,
+                width: 100.0,
                 height: 60.0,
                 fit: BoxFit.cover,
               ),
@@ -140,10 +176,10 @@ class CategoryTile extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Colors.black26,
+                color: Colors.black38,
                 borderRadius: BorderRadius.circular(6.0),
               ),
-              width: 120.0,
+              width: 100.0,
               height: 60.0,
               child: Text(
                 categoryName,
@@ -185,6 +221,7 @@ class BlogTile extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Card(
+              // elevation: 20.0,
               child: Column(
                 children: [
                   ClipRRect(
