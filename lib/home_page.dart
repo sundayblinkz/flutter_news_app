@@ -8,7 +8,6 @@ import 'package:news_24/models/article_model.dart';
 import 'package:news_24/views/article_view.dart';
 import 'package:news_24/views/category_view.dart';
 import 'package:intl/intl.dart';
-import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -59,44 +58,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: _loading
             ? Center(
-                child: Shimmer.fromColors(
-                    direction: ShimmerDirection.ltr,
-                    period: Duration(seconds: 10),
-                    baseColor: Colors.grey[700],
-                    highlightColor: Colors.grey[100],
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                    height: 80.0,
-                                    width: 100.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Container(
-                                      height: 8.0,
-                                      width: 80.0,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        )
-                      ],
-                    )),
+                child: Container(
+                  child: CircularProgressIndicator(),
+                ),
               )
             : SingleChildScrollView(
                 child: Container(
@@ -221,7 +185,7 @@ class BlogTile extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Card(
-              // elevation: 20.0,
+              elevation: 20.0,
               child: Column(
                 children: [
                   ClipRRect(
