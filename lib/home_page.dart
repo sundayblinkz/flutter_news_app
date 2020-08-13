@@ -185,7 +185,6 @@ class BlogTile extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Card(
-              elevation: 20.0,
               child: Column(
                 children: [
                   ClipRRect(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_24/home_page.dart';
-import 'package:news_24/welcome_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: WelcomeScreen(),
+      home: HomePage(),
     );
   }
 }
