@@ -99,6 +99,7 @@ class _HomePageState extends State<HomePage> {
                                 url: articles[index].url,
                                 publishedAt: DateFormat.Hm()
                                     .format(articles[index].publishedAt),
+                                categoryName: categories[index].categorieName,
                               );
                             }),
                       )
@@ -162,12 +163,13 @@ class CategoryTile extends StatelessWidget {
 }
 
 class BlogTile extends StatelessWidget {
-  final String imageUrl, title, desc, url, publishedAt;
+  final String imageUrl, title, desc, url, categoryName, publishedAt;
   BlogTile(
       {@required this.imageUrl,
       @required this.title,
       @required this.desc,
       @required this.url,
+      @required this.categoryName,
       @required this.publishedAt});
   @override
   Widget build(BuildContext context) {
@@ -218,6 +220,41 @@ class BlogTile extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: 8.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 15.0,
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          'Category:',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          categoryName,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
