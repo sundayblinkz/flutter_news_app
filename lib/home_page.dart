@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
-                    /// Categories
+                    // Categories
                     Container(
                       height: 70.0,
                       child: ListView.builder(
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
 
-                    ///Blog
+                    //Blog
                     Container(
                       padding: EdgeInsets.only(top: 16.0),
                       child: ListView.builder(
@@ -98,8 +98,9 @@ class _HomePageState extends State<HomePage> {
                             title: articles[index].title,
                             desc: articles[index].description,
                             url: articles[index].url,
-                            publishedAt: DateFormat.Hm()
-                                .format(articles[index].publishedAt),
+                            publishedAt: DateFormat.Hm().format(
+                              articles[index].publishedAt,
+                            ),
                           );
                         },
                       ),
@@ -188,68 +189,77 @@ class BlogTile extends StatelessWidget {
         );
       },
       child: Container(
-          margin: EdgeInsets.only(bottom: 16.0),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: Card(
-              child: Column(
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(4),
-                          topLeft: Radius.circular(4)),
-                      child: Image.network(imageUrl)),
-                  SizedBox(
-                    height: 8.0,
+        margin: EdgeInsets.only(bottom: 16.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Card(
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(4),
+                    topLeft: Radius.circular(4),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: Image.network(imageUrl),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 15.0,
+                    right: 15.0,
+                  ),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 15.0,
+                    right: 15.0,
+                  ),
+                  child: Container(
+                    height: 50,
                     child: Text(
-                      title,
+                      desc,
                       style: TextStyle(
-                        fontSize: 17.0,
+                        color: Colors.black54,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Container(
-                      height: 50,
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 15.0,
+                        bottom: 8.0,
+                      ),
                       child: Text(
-                        desc,
+                        publishedAt,
                         style: TextStyle(
                           color: Colors.black54,
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 15.0,
-                          bottom: 8.0,
-                        ),
-                        child: Text(
-                          publishedAt,
-                          style: TextStyle(
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
