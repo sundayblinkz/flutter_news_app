@@ -66,19 +66,21 @@ class _CategoryNewsState extends State<CategoryNews> {
                     Container(
                       padding: EdgeInsets.only(top: 16.0),
                       child: ListView.builder(
-                          itemCount: articles.length,
-                          shrinkWrap: true,
-                          physics: ClampingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return BlogTile(
-                              imageUrl: articles[index].urlToImage,
-                              title: articles[index].title,
-                              desc: articles[index].description,
-                              url: articles[index].url,
-                              publishedAt: DateFormat.Hm()
-                                  .format(articles[index].publishedAt),
-                            );
-                          }),
+                        itemCount: articles.length,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return BlogTile(
+                            imageUrl: articles[index].urlToImage,
+                            title: articles[index].title,
+                            desc: articles[index].description,
+                            url: articles[index].url,
+                            publishedAt: DateFormat.Hm().format(
+                              articles[index].publishedAt,
+                            ),
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -102,67 +104,71 @@ class BlogTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ArticleView(
-                      blogUrl: url,
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => ArticleView(
+              blogUrl: url,
+            ),
+          ),
+        );
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Card(
           child: Container(
-              margin: EdgeInsets.only(bottom: 16.0),
-              child: Column(
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(4),
-                          topLeft: Radius.circular(4)),
-                      child: Image.network(imageUrl)),
-                  SizedBox(
-                    height: 8.0,
+            margin: EdgeInsets.only(bottom: 16.0),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(4),
+                      topLeft: Radius.circular(4)),
+                  child: Image.network(imageUrl),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+                  child: Container(
+                    height: 50.0,
                     child: Text(
-                      title,
+                      desc,
                       style: TextStyle(
-                        fontSize: 17.0,
+                        color: Colors.black54,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Container(
-                      height: 50.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 15.0, right: 10.0),
                       child: Text(
-                        desc,
+                        publishedAt,
                         style: TextStyle(
                           color: Colors.black54,
                         ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0, right: 10.0),
-                        child: Text(
-                          publishedAt,
-                          style: TextStyle(
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              )),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

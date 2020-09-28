@@ -39,73 +39,76 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'News',
-                style: TextStyle(fontSize: 25.0),
-              ),
-              Text(
-                '19',
-                style: TextStyle(color: Colors.blue, fontSize: 25.0),
-              )
-            ],
-          ),
-          elevation: 0.0,
-          backgroundColor: Colors.grey.shade300,
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'News',
+              style: TextStyle(fontSize: 25.0),
+            ),
+            Text(
+              '19',
+              style: TextStyle(color: Colors.blue, fontSize: 25.0),
+            )
+          ],
         ),
-        body: _loading
-            ? Center(
-                child: Container(
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : SingleChildScrollView(
-                child: Container(
-                  color: Colors.grey.shade300,
-                  padding: EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      /// Categories
-                      Container(
-                        height: 70.0,
-                        child: ListView.builder(
-                            itemCount: categories.length,
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return CategoryTile(
-                                imageUrl: categories[index].imageUrl,
-                                categoryName: categories[index].categorieName,
-                              );
-                            }),
+        elevation: 0.0,
+        backgroundColor: Colors.grey.shade300,
+      ),
+      body: _loading
+          ? Center(
+              child: Container(
+                child: CircularProgressIndicator(),
+              ),
+            )
+          : SingleChildScrollView(
+              child: Container(
+                color: Colors.grey.shade300,
+                padding: EdgeInsets.symmetric(horizontal: 16.0),
+                child: Column(
+                  children: [
+                    /// Categories
+                    Container(
+                      height: 70.0,
+                      child: ListView.builder(
+                        itemCount: categories.length,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return CategoryTile(
+                            imageUrl: categories[index].imageUrl,
+                            categoryName: categories[index].categorieName,
+                          );
+                        },
                       ),
+                    ),
 
-                      ///Blog
-                      Container(
-                        padding: EdgeInsets.only(top: 16.0),
-                        child: ListView.builder(
-                            itemCount: articles.length,
-                            shrinkWrap: true,
-                            physics: ClampingScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return BlogTile(
-                                imageUrl: articles[index].urlToImage,
-                                title: articles[index].title,
-                                desc: articles[index].description,
-                                url: articles[index].url,
-                                publishedAt: DateFormat.Hm()
-                                    .format(articles[index].publishedAt),
-                              );
-                            }),
-                      )
-                    ],
-                  ),
+                    ///Blog
+                    Container(
+                      padding: EdgeInsets.only(top: 16.0),
+                      child: ListView.builder(
+                        itemCount: articles.length,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return BlogTile(
+                            imageUrl: articles[index].urlToImage,
+                            title: articles[index].title,
+                            desc: articles[index].description,
+                            url: articles[index].url,
+                            publishedAt: DateFormat.Hm()
+                                .format(articles[index].publishedAt),
+                          );
+                        },
+                      ),
+                    )
+                  ],
                 ),
-              ));
+              ),
+            ),
+    );
   }
 }
 
@@ -118,11 +121,13 @@ class CategoryTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CategoryNews(
-                      category: categoryName.toLowerCase(),
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryNews(
+              category: categoryName.toLowerCase(),
+            ),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(right: 16.0),
@@ -174,11 +179,13 @@ class BlogTile extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ArticleView(
-                      blogUrl: url,
-                    )));
+          context,
+          MaterialPageRoute(
+            builder: (context) => ArticleView(
+              blogUrl: url,
+            ),
+          ),
+        );
       },
       child: Container(
           margin: EdgeInsets.only(bottom: 16.0),
