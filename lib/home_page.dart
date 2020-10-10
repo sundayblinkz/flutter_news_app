@@ -159,7 +159,7 @@ class CategoryTile extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
