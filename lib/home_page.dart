@@ -8,6 +8,7 @@ import 'package:news_24/models/article_model.dart';
 import 'package:news_24/views/article_view.dart';
 import 'package:news_24/views/category_view.dart';
 import 'package:intl/intl.dart';
+import 'package:getwidget/getwidget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -58,8 +59,9 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _loading
           ? Center(
-              child: Container(
-                child: CircularProgressIndicator(),
+              child: GFLoader(
+                type: GFLoaderType.ios,
+                size: 50.0,
               ),
             )
           : SingleChildScrollView(
