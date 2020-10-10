@@ -52,15 +52,14 @@ class _CategoryNewsState extends State<CategoryNews> {
             )
           ],
         ),
+        centerTitle: true,
         elevation: 0.0,
       ),
       body: _loading
           ? Center(
-              child: Container(
-                child: GFLoader(
-                  type: GFLoaderType.ios,
-                  size: 50.0,
-                ),
+              child: GFLoader(
+                type: GFLoaderType.ios,
+                size: 50.0,
               ),
             )
           : SingleChildScrollView(

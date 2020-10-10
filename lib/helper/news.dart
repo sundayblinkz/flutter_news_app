@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 class News {
   List<ArticleModel> news = [];
 
+  // ignore: missing_return
   Future<Void> getNews() async {
     String url =
         "http://newsapi.org/v2/top-headlines?country=ng&apiKey=5c2b29a151894d19b6f25b6569b33d51";

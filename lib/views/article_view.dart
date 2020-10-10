@@ -31,6 +31,7 @@ class _ArticleViewState extends State<ArticleView> {
             )
           ],
         ),
+        centerTitle: true,
         elevation: 0.0,
       ),
       body: Container(
