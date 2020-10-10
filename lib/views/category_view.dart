@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/loader/gf_loader.dart';
+import 'package:getwidget/types/gf_loader_type.dart';
 import 'package:intl/intl.dart';
 import 'package:news_24/helper/news.dart';
 import 'package:news_24/models/article_model.dart';
@@ -55,7 +57,10 @@ class _CategoryNewsState extends State<CategoryNews> {
       body: _loading
           ? Center(
               child: Container(
-                child: CircularProgressIndicator(),
+                child: GFLoader(
+                  type: GFLoaderType.ios,
+                  size: 50.0,
+                ),
               ),
             )
           : SingleChildScrollView(
